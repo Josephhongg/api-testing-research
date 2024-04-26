@@ -1,0 +1,32 @@
+{
+  "name": "03-node-js-rest-api-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha --timeout 10000 --exit",
+    "format": "prettier --write .",
+    "start": "node app.js",
+    "institutions:create": "node prisma/controllers/institutions.js",
+    "institutions:delete": "node prisma/controllers/institutions.js -d",
+    "departments:create": "node prisma/controllers/departments.js",
+    "departments:delete": "node prisma/controllers/departments.js -d",
+    "courses:create": "node prisma/controllers/courses.js",
+    "courses:delete": "node prisma/controllers/courses.js -d"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.1.0",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.0.0",
+    "prettier": "2.7.1",
+    "prisma": "^4.1.0"
+  }
+}

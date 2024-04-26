@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+  // url      = "file:./test.db"
+}
+
+model Institution {
+  id         Int          @id @default(autoincrement())
+  name       String       @unique
+  country    String?
+  createdAt  DateTime     @default(now())
+  departments Department[]
+}
+
+model Department {
+  id            Int         @id @default(autoincrement())
+  name          String?     @unique 
+  location      String?     
+  institutionName  String
+  createdAt     DateTime    @default(now())
+  institution   Institution @relation(fields: [institutionName], references: [name], onDelete: Cascade)
+  courses      Course[] 
+}
+
+model Course {
+  id            Int         @id @default(autoincrement())
+  name          String?     @unique
+  departmentName  String
+  createdAt     DateTime    @default(now())
+  department    Department @relation(fields: [departmentName], references: [name], onDelete: Cascade)
+}
